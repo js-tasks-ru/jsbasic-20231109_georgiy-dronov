@@ -5,12 +5,10 @@ function factorial(n) {
   let count = --numberFactorial;
 
   if (n === 1 || n === 0) {
-    return result = 1;
-  } else {
-    for (i = count; i > 1; i--) {
+    return 1;
+  } for (i = count; i > 1; i--) {
       result *= i;
       console.log(result);
     }
     return result;
   }
-}
