@@ -11,7 +11,7 @@ function print(text) {
  */
 function isValid(name) {
   // ваш код...
-  if (String(name) === "null") {
+  if (!name) {
     return false;
   } else if (name.length > 3 && !name.includes(' ')) {
     return true;
