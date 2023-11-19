@@ -1,3 +1,13 @@
 function isEmpty(obj) {
-  // ваш код...
+
+  let keyCount = 0;
+
+  for (let key in obj) {
+    keyCount += 1
+  }
+
+  return keyCount === 0
 }
+
+
+
