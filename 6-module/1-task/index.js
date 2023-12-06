@@ -14,12 +14,12 @@
  */
 export default class UserTable {
   constructor(rows) {
-    this.rows = rows || this.rows
-    this.elem = this.createTable()
+    this.rows = rows || this.rows;
+    this.elem = this.createTable();
   }
 
   createTable() {
-    const table = document.createElement('table')
+    const table = document.createElement('table');
     table.innerHTML = `
       <thead>
         <tr>
@@ -29,23 +29,31 @@ export default class UserTable {
           <th>Город</th>
           <th></th>
         </tr>
-        </thead>
-        <tbody>
-            ${this.rows.map(row => this.createTableRow(row)).join('')}
-        </tbody>
-    `
-    return table
+      </thead>
+      <tbody>
+        ${this.rows.map((row) => this.createTableRow(row)).join('')}
+      </tbody>
+    `;
+    table.addEventListener('click', (event) => this.handleButtonClick(event));
+    return table;
   }
 
   createTableRow(row) {
-    const tr = document.createElement('tr')
+    const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${row.name}</td>
-        <td>${row.age}</td>
-        <td>${row.salary}</td>
-        <td>${row.city}</td>
-        <td><button onclick="this.parentNode.parentNode.remove()">X</button></td>
-    `
-    return tr.outerHTML
+      <td>${row.age}</td>
+      <td>${row.salary}</td>
+      <td>${row.city}</td>
+      <td><button data-action="remove">X</button></td>
+    `;
+    return tr.outerHTML;
+  }
+
+  handleButtonClick(event) {
+    const target = event.target;
+    if (target && target.dataset.action === 'remove') {
+      target.closest('tr').remove();
+    }
   }
 }

@@ -51,11 +51,6 @@ export default class Carousel {
     this.carouselArrows.left.addEventListener('click', this.prevSlide.bind(this))
     this.carouselArrows.right.addEventListener('click', this.nextSlide.bind(this))
 
-    this.elem.addEventListener('product-add', event => {
-      // Handle product-add event here
-      console.log('Product added:', event.detail)
-    })
-
     this.elem.addEventListener('click', event => {
       if (event.target.classList.contains('carousel__button')) {
         this.elem.dispatchEvent(new CustomEvent('product-add', {
